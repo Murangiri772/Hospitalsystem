@@ -4,21 +4,21 @@
 
 
 {% block content %}
-
+<h1 class="text-center">All Appointment</h1>
 <div class="d-flex flex-wrap gap-5 container">
-    <h1 class="text-center">All Appointment</h1>
+
 {% for x in all  %}
 
     <div class="card w-30  p-3 shadow-lg ">
        <p class="text-danger fw-bold"> {{ x.name }}</p>
         <p><b>Email:</b>{{ x.email}}</p>
         <p><b>phone:</b>{{ x.phone}}</p>
-        <p><b>datetime:</b>{{ x.datetime}}</p>
+        <p><b>date:</b>{{ x.date}}</p>
         <p><b>department:</b>{{ x.department}}</p>
 
         <p><b>doctor:</b>{{ x.doctor}}</p>
         <p>
-            <a href="" class="text-warning me-5">
+            <a href="{% url 'edite' x.id %}" class="text-warning me-5">
                 <i class="bi bi-pencil"></i>Edite
             </a>
             <a href="/delete/{{ x.id }}" class="text-danger">
