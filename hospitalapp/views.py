@@ -73,6 +73,31 @@ def edite(request,id):
         return render(request,'edite.html',{'editeinfo':editeinfo})
 
 
+def delete(request,id):
+    deletedcontact=Contact.objects.get(id=id)
+    deletedcontact.delete()
+    return redirect('/view')
+
+
+def viewedit(request,id):
+    vieweditinfo = get_object_or_404(Contact,id=id)
+    if request.method == 'POST':
+        vieweditinfo.name = request.POST.get('name')
+        vieweditinfo.email = request.POST.get('email')
+        vieweditinfo.subject = request.POST.get('subject')
+        vieweditinfo.message = request.POST.get('message')
+
+        vieweditinfo.save()
+        return redirect('/view')
+    else:
+        return render(request,'viewedit.html',{'vieweditinfo':vieweditinfo})
+
+def register(request):
+    return render(request, 'register.html')
+def login_view(request):
+    return render(request,'log in.html')
+
+
 
 
 
